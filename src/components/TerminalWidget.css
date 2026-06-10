@@ -1,0 +1,138 @@
+.terminal-widget {
+  width: 100%;
+  max-width: 650px;
+  background: rgba(5, 8, 15, 0.85);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 20px rgba(139, 92, 246, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-header {
+  background: rgba(15, 23, 42, 0.9);
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot.red { background-color: var(--neon-rose); }
+.dot.yellow { background-color: var(--neon-orange); }
+.dot.green { background-color: var(--neon-emerald); }
+
+.terminal-title {
+  flex-grow: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.terminal-body {
+  padding: 20px;
+  height: 320px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Scrollbar customization for terminal */
+.terminal-body::-webkit-scrollbar {
+  width: 6px;
+}
+.terminal-body::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px;
+}
+
+.terminal-line.input {
+  color: #fff;
+  font-weight: 500;
+}
+
+.terminal-line.output {
+  color: #c7d2fe; /* Indigo light */
+}
+
+.terminal-line.system {
+  color: var(--neon-blue);
+}
+
+.terminal-line.highlight {
+  color: #f472b6; /* Pink accent */
+  font-weight: bold;
+}
+
+.terminal-line.error {
+  color: var(--neon-rose);
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prompt {
+  color: var(--neon-emerald);
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.terminal-input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* Terminal button shortcuts */
+.terminal-shortcuts {
+  background: rgba(15, 23, 42, 0.4);
+  padding: 10px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  justify-content: center;
+}
+
+.shortcut-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-muted);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.shortcut-btn:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: var(--neon-purple);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+}
