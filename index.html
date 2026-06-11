@@ -4,22 +4,908 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/portfolio/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO Meta Tags -->
     <title>Venkatesan Kumar | Portfolio</title>
     <meta name="description" content="Venkatesan Kumar is a passionate React & Frontend Developer specializing in creating interactive, premium web applications. Discover his projects, skills, and awards." />
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script type="module" crossorigin src="/portfolio/assets/index-CYbt-yn6.js"></script>
+    <script type="module" crossorigin src="/portfolio/assets/index-DrJHCP5N.js"></script>
     <link rel="stylesheet" crossorigin href="/portfolio/assets/index-BAjP13id.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div class="portfolio-app">
+      <!-- Navigation -->
+      <nav class="navbar">
+        <div class="container nav-container">
+          <a href="#home" class="nav-logo">
+            <i class="fas fa-code"></i> VENKATESAN.DEV
+          </a>
+          <ul class="nav-menu">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#coding" class="nav-link">Coding Profiles</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#experience" class="nav-link">Timeline</a></li>
+            <li><a href="#awards" class="nav-link">Achievements</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+          <button class="nav-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section id="home" class="hero-section">
+        <div class="container hero-container">
+          <div class="hero-content">
+            <div class="hero-text-side">
+              <span class="hero-greeting"><i class="fas fa-sparkles"></i> Welcom to my space</span>
+              <h1 class="glow-text">Hello, I'm <span class="glow-text-accent">Venkatesan Kumar</span></h1>
+              <h2>Associate Software Developer</h2>
+              <p class="hero-bio">
+                B.Tech Information Technology student at Sri Shanmugha College of Engineering. Specializing in React, front-end optimization, and clean MVC frameworks. I compete regularly in algorithmic coding symposia and national-level hackathons.
+              </p>
+              <div class="hero-cta-buttons">
+                <a href="#contact" class="btn-primary">
+                  <i class="fas fa-paper-plane"></i> Get In Touch
+                </a>
+                <a href="Venkatesankumarresume.pdf" download="Venkatesan_Kumar_Resume.pdf" class="btn-secondary">
+                  <i class="fas fa-download"></i> Get Resume
+                </a>
+              </div>
+            </div>
+            <div class="hero-widget-side">
+              <div class="terminal-widget glass-panel">
+                <div class="terminal-header">
+                  <div class="terminal-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                  </div>
+                  <div class="terminal-title">bash - guest@venkatesan-kumar</div>
+                </div>
+                <div class="terminal-body">
+                  <div class="terminal-input-line">
+                    <span class="prompt">guest@venkatesan-kumar:~$</span>
+                    <input type="text" class="terminal-input" placeholder="Type a command..." autofocus />
+                  </div>
+                  <div id="terminal-end-ref"></div>
+                </div>
+                <div class="terminal-shortcuts">
+                  <button class="shortcut-btn">about</button>
+                  <button class="shortcut-btn">skills</button>
+                  <button class="shortcut-btn">awards</button>
+                  <button class="shortcut-btn">contact</button>
+                  <button class="shortcut-btn">clear</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Competitive Coding Profiles -->
+      <section id="coding" class="coding-section">
+        <div class="container">
+          <h2 class="section-title">Competitive Programming</h2>
+          <div class="coding-profiles-grid">
+            <div class="coding-card glass-panel">
+              <div class="coding-card-header">
+                <div class="brand-logo leetcode">
+                  <i class="fas fa-code"></i>
+                </div>
+                <h3>LeetCode</h3>
+              </div>
+              <p class="profile-handle">@VENKATESAN_k</p>
+              <div class="coding-stats">
+                <div class="stat-row">
+                  <span>Solved Problems</span>
+                  <span class="stat-val">750+</span>
+                </div>
+                <div class="stat-row">
+                  <span>Difficulty</span>
+                  <span class="stat-val text-success">Easy / Medium / Hard</span>
+                </div>
+              </div>
+              <a href="https://leetcode.com/u/VENKATESAN_k/" target="_blank" rel="noopener noreferrer" class="btn-secondary coding-profile-link">
+                <i class="fas fa-external-link-alt"></i> View Profile
+              </a>
+            </div>
+
+            <div class="coding-card glass-panel">
+              <div class="coding-card-header">
+                <div class="brand-logo codeforces">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Codeforces</h3>
+              </div>
+              <p class="profile-handle">@venkatesan.kumarsivan</p>
+              <div class="coding-stats">
+                <div class="stat-row">
+                  <span>Solved Problems</span>
+                  <span class="stat-val">250+</span>
+                </div>
+                <div class="stat-row">
+                  <span>Languages</span>
+                  <span class="stat-val text-success">C++ / Java</span>
+                </div>
+              </div>
+              <a href="https://codeforces.com/profile/venkatesan.kumarsivan" target="_blank" rel="noopener noreferrer" class="btn-secondary coding-profile-link">
+                <i class="fas fa-external-link-alt"></i> View Profile
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="projects-section">
+        <div class="container">
+          <h2 class="section-title">My Projects</h2>
+          
+          <div class="project-filters">
+            <button data-filter="all" class="filter-btn active">All</button>
+            <button data-filter="react-fullstack" class="filter-btn">React & Fullstack</button>
+            <button data-filter="frontend-js" class="filter-btn">Frontend JS</button>
+          </div>
+
+          <div class="projects-grid">
+              <div class="project-card glass-panel" data-id="1" data-category="react-fullstack">
+                <div class="project-card-image" style="background-image: url('/portfolio/certificates/admission_portal.png')">
+                  <div class="project-card-overlay">
+                    <button class="view-details-btn">
+                      <i class="fas fa-expand-alt"></i> View Details
+                    </button>
+                  </div>
+                </div>
+                <div class="project-card-content">
+                  <h3 class="project-card-title">College Admission Portal</h3>
+                  <p class="project-card-desc">Designed and built a full-stack College Admission Management System using React, Spring Boot, and MySQL.</p>
+                  <div class="project-card-tech">
+                    <span class="tech-badge">React</span><span class="tech-badge">Spring Boot</span><span class="tech-badge">MySQL</span>
+                    <span class="tech-badge-more">+3</span>
+                  </div>
+                  <div class="project-card-links" onclick="event.stopPropagation()">
+                    <a href="https://github.com/venkatesanweb/College-Admission-Portal" target="_blank" rel="noopener noreferrer" class="card-link-btn" title="View Source Code"><i class="fab fa-github"></i> Code</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card glass-panel" data-id="2" data-category="frontend-js">
+                <div class="project-card-image" style="background-image: url('/portfolio/certificates/amazon-2.png')">
+                  <div class="project-card-overlay">
+                    <button class="view-details-btn">
+                      <i class="fas fa-expand-alt"></i> View Details
+                    </button>
+                  </div>
+                </div>
+                <div class="project-card-content">
+                  <h3 class="project-card-title">Amazon Clone (Frontend)</h3>
+                  <p class="project-card-desc">A responsive Amazon e-commerce storefront replica built using pure frontend technologies.</p>
+                  <div class="project-card-tech">
+                    <span class="tech-badge">HTML5</span><span class="tech-badge">CSS3</span><span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge-more">+1</span>
+                  </div>
+                  <div class="project-card-links" onclick="event.stopPropagation()">
+                    <a href="https://github.com/venkatesanweb/Amazon_copy" target="_blank" rel="noopener noreferrer" class="card-link-btn" title="View Source Code"><i class="fab fa-github"></i> Code</a>
+                    <a href="https://venkatesanweb.github.io/Amazon_copy/amazon.html" target="_blank" rel="noopener noreferrer" class="card-link-btn primary" title="View Live Demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card glass-panel" data-id="3" data-category="frontend-js">
+                <div class="project-card-image" style="background-image: url('/portfolio/certificates/image.png')">
+                  <div class="project-card-overlay">
+                    <button class="view-details-btn">
+                      <i class="fas fa-expand-alt"></i> View Details
+                    </button>
+                  </div>
+                </div>
+                <div class="project-card-content">
+                  <h3 class="project-card-title">Rock-Paper-Scissors Game</h3>
+                  <p class="project-card-desc">Interactive browser-based game featuring persistent local storage and CSS animations.</p>
+                  <div class="project-card-tech">
+                    <span class="tech-badge">HTML5</span><span class="tech-badge">CSS3</span><span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge-more">+1</span>
+                  </div>
+                  <div class="project-card-links" onclick="event.stopPropagation()">
+                    <a href="https://github.com/venkatesanweb/Play-game" target="_blank" rel="noopener noreferrer" class="card-link-btn" title="View Source Code"><i class="fab fa-github"></i> Code</a>
+                    <a href="https://venkatesanweb.github.io/Play-game/game.html" target="_blank" rel="noopener noreferrer" class="card-link-btn primary" title="View Live Demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card glass-panel" data-id="4" data-category="react-fullstack">
+                <div class="project-card-image" style="background-image: url('/portfolio/certificates/blog_app.png')">
+                  <div class="project-card-overlay">
+                    <button class="view-details-btn">
+                      <i class="fas fa-expand-alt"></i> View Details
+                    </button>
+                  </div>
+                </div>
+                <div class="project-card-content">
+                  <h3 class="project-card-title">Full Stack Blog Website</h3>
+                  <p class="project-card-desc">A secure multi-user blog application built with Django backend and MySQL databases.</p>
+                  <div class="project-card-tech">
+                    <span class="tech-badge">Python</span><span class="tech-badge">Django</span><span class="tech-badge">MySQL</span>
+                    <span class="tech-badge-more">+2</span>
+                  </div>
+                  <div class="project-card-links" onclick="event.stopPropagation()">
+                    <a href="https://github.com/venkatesanweb/blog_app" target="_blank" rel="noopener noreferrer" class="card-link-btn" title="View Source Code"><i class="fab fa-github"></i> Code</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card glass-panel" data-id="5" data-category="frontend-js">
+                <div class="project-card-image" style="background-image: url('/portfolio/certificates/Shop_fussion.png')">
+                  <div class="project-card-overlay">
+                    <button class="view-details-btn">
+                      <i class="fas fa-expand-alt"></i> View Details
+                    </button>
+                  </div>
+                </div>
+                <div class="project-card-content">
+                  <h3 class="project-card-title">Shop_Fusion (E-commerce)</h3>
+                  <p class="project-card-desc">A modern, responsive online shopping interface with catalog filtration and cart drawer.</p>
+                  <div class="project-card-tech">
+                    <span class="tech-badge">HTML5</span><span class="tech-badge">CSS3</span><span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge-more">+1</span>
+                  </div>
+                  <div class="project-card-links" onclick="event.stopPropagation()">
+                    <a href="https://github.com/venkatesanweb/Purching_app" target="_blank" rel="noopener noreferrer" class="card-link-btn" title="View Source Code"><i class="fab fa-github"></i> Code</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card glass-panel" data-id="6" data-category="frontend-js">
+                <div class="project-card-image" style="background-image: url('/portfolio/certificates/password_manager.png')">
+                  <div class="project-card-overlay">
+                    <button class="view-details-btn">
+                      <i class="fas fa-expand-alt"></i> View Details
+                    </button>
+                  </div>
+                </div>
+                <div class="project-card-content">
+                  <h3 class="project-card-title">Password Manager App</h3>
+                  <p class="project-card-desc">A secure password manager application to store, manage, and retrieve credentials safely.</p>
+                  <div class="project-card-tech">
+                    <span class="tech-badge">HTML5</span><span class="tech-badge">CSS3</span><span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge-more">+1</span>
+                  </div>
+                  <div class="project-card-links" onclick="event.stopPropagation()">
+                    <a href="https://github.com/venkatesanweb/Password_manager" target="_blank" rel="noopener noreferrer" class="card-link-btn" title="View Source Code"><i class="fab fa-github"></i> Code</a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="skills-section">
+        <div class="container">
+          <h2 class="section-title">My Skillset</h2>
+          <div class="skills-grid">
+              <div class="skills-category-card glass-panel">
+                <h3 class="category-title">Programming Languages</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fas fa-terminal"></i>
+                          C / C++
+                        </span>
+                        <span class="skill-percent">85%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 85%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fas fa-mug-hot"></i>
+                          Java
+                        </span>
+                        <span class="skill-percent">80%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 80%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fas fa-code"></i>
+                          Python
+                        </span>
+                        <span class="skill-percent">75%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 75%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fab fa-js-square"></i>
+                          JavaScript (ES6+)
+                        </span>
+                        <span class="skill-percent">85%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 85%"></div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="skills-category-card glass-panel">
+                <h3 class="category-title">Frontend & Full Stack</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fab fa-react"></i>
+                          React.js
+                        </span>
+                        <span class="skill-percent">85%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 85%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fab fa-html5"></i>
+                          HTML5 / CSS3
+                        </span>
+                        <span class="skill-percent">90%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 90%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fas fa-leaf"></i>
+                          Spring Boot
+                        </span>
+                        <span class="skill-percent">70%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 70%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fas fa-cubes"></i>
+                          Django
+                        </span>
+                        <span class="skill-percent">75%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 75%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fab fa-wordpress"></i>
+                          WordPress
+                        </span>
+                        <span class="skill-percent">80%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 80%"></div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="skills-category-card glass-panel">
+                <h3 class="category-title">Databases & Tools</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fas fa-database"></i>
+                          MySQL
+                        </span>
+                        <span class="skill-percent">80%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 80%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fab fa-git-alt"></i>
+                          Git / GitHub
+                        </span>
+                        <span class="skill-percent">85%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 85%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fas fa-box-open"></i>
+                          Maven / Gradle
+                        </span>
+                        <span class="skill-percent">70%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 70%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fas fa-laptop"></i>
+                          VS Code
+                        </span>
+                        <span class="skill-percent">90%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 90%"></div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="skills-category-card glass-panel">
+                <h3 class="category-title">Concepts & Soft Skills</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fas fa-brain"></i>
+                          Data Structures & Algos
+                        </span>
+                        <span class="skill-percent">85%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 85%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fas fa-sitemap"></i>
+                          Object Oriented (OOP)
+                        </span>
+                        <span class="skill-percent">85%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 85%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fas fa-network-wired"></i>
+                          System Design
+                        </span>
+                        <span class="skill-percent">70%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 70%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-item">
+                      <div class="skill-info">
+                        <span class="skill-name-wrapper">
+                          <i class="fas fa-lightbulb"></i>
+                          Problem Solving
+                        </span>
+                        <span class="skill-percent">90%</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" style="width: 90%"></div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline Section -->
+      <section id="experience" class="timeline-section">
+        <div class="container">
+          <h2 class="section-title">Experience & Education</h2>
+          <div class="timeline-container">
+            <div class="timeline-tabs">
+              <button data-tab="experience" class="timeline-tab-btn active"><i class="fas fa-briefcase"></i> Experience</button>
+              <button data-tab="education" class="timeline-tab-btn"><i class="fas fa-graduation-cap"></i> Education</button>
+            </div>
+            <div class="timeline-track-wrapper">
+              <div class="timeline-line-track"></div>
+              
+              <div id="experience-list" class="timeline-list">
+                  <div class="timeline-card-wrapper">
+                    <div class="timeline-dot-indicator"><i class="fas fa-laptop-code"></i></div>
+                    <div class="timeline-card glass-panel">
+                      <span class="timeline-period">May 2024 - Present</span>
+                      <h3 class="timeline-role">Freelancer - Full Stack Developer</h3>
+                      <h4 class="timeline-company">Self-Employed</h4>
+                      <ul class="timeline-points">
+                        <li>Architect and deliver end-to-end full-stack web applications for local clients.</li><li>Integrate responsive frontends with Python/Django and Node.js backends.</li><li>Optimize SQL database schemas and ensure clean, structured code practices.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="timeline-card-wrapper">
+                    <div class="timeline-dot-indicator"><i class="fas fa-briefcase"></i></div>
+                    <div class="timeline-card glass-panel">
+                      <span class="timeline-period">Jan 2024 - Apr 2024</span>
+                      <h3 class="timeline-role">Web Developer Intern</h3>
+                      <h4 class="timeline-company">StartNet Ventures Private Limited</h4>
+                      <ul class="timeline-points">
+                        <li>Engineered responsive and modular web interfaces using HTML, CSS, JavaScript, and WordPress.</li><li>Built server-side queries and schema designs with MySQL databases.</li><li>Improved site load speeds and ensured robust cross-browser and mobile compatibility.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="timeline-card-wrapper">
+                    <div class="timeline-dot-indicator"><i class="fas fa-clock"></i></div>
+                    <div class="timeline-card glass-panel">
+                      <span class="timeline-period">May 2024</span>
+                      <h3 class="timeline-role">Web Developer (Project-based)</h3>
+                      <h4 class="timeline-company">Aakam Time Management</h4>
+                      <ul class="timeline-points">
+                        <li>Designed and deployed custom time management and productivity tools.</li><li>Collaborated with project managers to refine client portal user experience.</li>
+                      </ul>
+                    </div>
+                  </div>
+              </div>
+
+              <div id="education-list" class="timeline-list" style="display: none;">
+                  <div class="timeline-card-wrapper">
+                    <div class="timeline-dot-indicator"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="timeline-card glass-panel">
+                      <span class="timeline-period">2023 - 2027 (Expected)</span>
+                      <h3 class="timeline-role">B.Tech in Information Technology</h3>
+                      <h4 class="timeline-company">Sri Shanmugha College of Engineering and Technology</h4>
+                      <p class="timeline-details">Currently in 6th semester. CGPA: 8.88 / 10.0 (up to 5th semester). Active contributor to coding events and symposia.</p>
+                    </div>
+                  </div>
+                  <div class="timeline-card-wrapper">
+                    <div class="timeline-dot-indicator"><i class="fas fa-school"></i></div>
+                    <div class="timeline-card glass-panel">
+                      <span class="timeline-period">Completed May 2022</span>
+                      <h3 class="timeline-role">Higher Secondary Certificate (HSC) - 12th Grade</h3>
+                      <h4 class="timeline-company">Govt Higher Secondary School</h4>
+                      <p class="timeline-details">Specialized in Computer Science & Mathematics. Secured 74% aggregate.</p>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Awards Section -->
+      <section id="awards" class="awards-section">
+        <div class="container">
+          <h2 class="section-title">Awards & Symposia</h2>
+          <div class="awards-gallery-container">
+            <div class="gallery-tabs">
+              <button data-tab="awards" class="gallery-tab-btn active"><i class="fas fa-award"></i> Coding Awards</button>
+              <button data-tab="certs" class="gallery-tab-btn"><i class="fas fa-certificate"></i> Certifications</button>
+            </div>
+            
+            <div id="awards-grid" class="awards-grid">
+                <div class="award-card glass-panel">
+                  <div class="award-icon-wrapper blue">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <div class="award-card-info">
+                    <span class="award-badge-date">Jan 2026</span>
+                    <h3 class="award-card-title">Shaastra 2026 - Reverse Coding X</h3>
+                    <h4 class="award-card-rank">45th Position</h4>
+                    <p class="award-card-inst">Indian Institute of Technology Madras (IITM)</p>
+                    <p class="award-card-desc">Secured 45th place at the national level in the Reverse Coding contest held during Shaastra 2026.</p>
+                  </div>
+                </div>
+                <div class="award-card glass-panel">
+                  <div class="award-icon-wrapper gold">
+                    <i class="fas fa-trophy"></i>
+                  </div>
+                  <div class="award-card-info">
+                    <span class="award-badge-date">2025</span>
+                    <h3 class="award-card-title">Infovista 25 Symposium</h3>
+                    <h4 class="award-card-rank">1st Prize</h4>
+                    <p class="award-card-inst">Sri Sai Ram Engineering College</p>
+                    <p class="award-card-desc">Won 1st prize in the national level Racecraft Algo Coding competition.</p>
+                  </div>
+                </div>
+                <div class="award-card glass-panel">
+                  <div class="award-icon-wrapper emerald">
+                    <i class="fas fa-project-diagram"></i>
+                  </div>
+                  <div class="award-card-info">
+                    <span class="award-badge-date">Oct 2025</span>
+                    <h3 class="award-card-title">Project Expo - MANAV'25</h3>
+                    <h4 class="award-card-rank">1st Prize</h4>
+                    <p class="award-card-inst">Salem College of Engineering and Technology</p>
+                    <p class="award-card-desc">Won 1st prize in the Project Expo for presenting an innovative software architecture project.</p>
+                  </div>
+                </div>
+                <div class="award-card glass-panel">
+                  <div class="award-icon-wrapper purple">
+                    <i class="fas fa-terminal"></i>
+                  </div>
+                  <div class="award-card-info">
+                    <span class="award-badge-date">Sept 2025</span>
+                    <h3 class="award-card-title">Code Trackers (Python)</h3>
+                    <h4 class="award-card-rank">1st Prize</h4>
+                    <p class="award-card-inst">Sri Sai Ranganathan Engineering College, Coimbatore</p>
+                    <p class="award-card-desc">Secured 1st place in the National Level Technical Symposium for Code Tracking / Python code tracing.</p>
+                  </div>
+                </div>
+                <div class="award-card glass-panel">
+                  <div class="award-icon-wrapper rose">
+                    <i class="fas fa-bug"></i>
+                  </div>
+                  <div class="award-card-info">
+                    <span class="award-badge-date">March 2025</span>
+                    <h3 class="award-card-title">Algo-Code Debugging</h3>
+                    <h4 class="award-card-rank">2nd Prize</h4>
+                    <p class="award-card-inst">Rathinam Technical Campus</p>
+                    <p class="award-card-desc">Won 2nd prize at the national level student festival for algorithmic debugging challenges.</p>
+                  </div>
+                </div>
+                <div class="award-card glass-panel">
+                  <div class="award-icon-wrapper gold">
+                    <i class="fas fa-laptop-code"></i>
+                  </div>
+                  <div class="award-card-info">
+                    <span class="award-badge-date">2025</span>
+                    <h3 class="award-card-title">Code Debugging</h3>
+                    <h4 class="award-card-rank">1st Prize</h4>
+                    <p class="award-card-inst">R P Sarathy College of Engineering</p>
+                    <p class="award-card-desc">Won 1st prize in the speed debugging contest resolving complex runtime errors and memory leaks.</p>
+                  </div>
+                </div>
+                <div class="award-card glass-panel">
+                  <div class="award-icon-wrapper orange">
+                    <i class="fas fa-lightbulb"></i>
+                  </div>
+                  <div class="award-card-info">
+                    <span class="award-badge-date">2024</span>
+                    <h3 class="award-card-title">Vibethon - Hackathon</h3>
+                    <h4 class="award-card-rank">4th Prize</h4>
+                    <p class="award-card-inst">KSR College of Engineering</p>
+                    <p class="award-card-desc">Finished 4th in a 24-hour hackathon for building responsive web applications.</p>
+                  </div>
+                </div>
+                <div class="award-card glass-panel">
+                  <div class="award-icon-wrapper blue">
+                    <i class="fas fa-microchip"></i>
+                  </div>
+                  <div class="award-card-info">
+                    <span class="award-badge-date">2025</span>
+                    <h3 class="award-card-title">Rev Coding - Computations</h3>
+                    <h4 class="award-card-rank">3rd Prize</h4>
+                    <p class="award-card-inst">RV Institute of Technology</p>
+                    <p class="award-card-desc">Secured 3rd prize in the Rev Coding competition at the national level Computations event.</p>
+                  </div>
+                </div>
+                <div class="award-card glass-panel">
+                  <div class="award-icon-wrapper purple">
+                    <i class="fas fa-bug"></i>
+                  </div>
+                  <div class="award-card-info">
+                    <span class="award-badge-date">2025</span>
+                    <h3 class="award-card-title">Code Debugging</h3>
+                    <h4 class="award-card-rank">3rd Prize</h4>
+                    <p class="award-card-inst">KSR College of Engineering</p>
+                    <p class="award-card-desc">Won 3rd prize in the Code Debugging contest, resolving complex algorithmic errors under time pressure.</p>
+                  </div>
+                </div>
+            </div>
+
+            <div id="certs-grid" class="certs-grid" style="display: none;">
+                <div class="cert-card glass-panel">
+                  <div class="cert-card-image" style="background-image: url('/portfolio/certificates/Fullstack_development.png')"></div>
+                  <div class="cert-card-content">
+                    <h3 class="cert-card-title">Full-Stack Web Development</h3>
+                    <h4 class="cert-card-issuer">Infosys Springboard</h4>
+                    <p class="cert-card-desc">Completed comprehensive hands-on training in Java, Spring Boot, HTML, CSS, JavaScript, MySQL, and REST API development.</p>
+                    <span class="cert-zoom-hint"><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                  </div>
+                </div>
+                <div class="cert-card glass-panel">
+                  <div class="cert-card-image" style="background-image: url('/portfolio/certificates/django.png')"></div>
+                  <div class="cert-card-content">
+                    <h3 class="cert-card-title">Python with Django</h3>
+                    <h4 class="cert-card-issuer">Infosys Springboard</h4>
+                    <p class="cert-card-desc">Hands-on training in Python programming and building MVC web applications using the Django web framework.</p>
+                    <span class="cert-zoom-hint"><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                  </div>
+                </div>
+                <div class="cert-card glass-panel">
+                  <div class="cert-card-image" style="background-image: url('/portfolio/certificates/html.png')"></div>
+                  <div class="cert-card-content">
+                    <h3 class="cert-card-title">Frontend Development HTML</h3>
+                    <h4 class="cert-card-issuer">Great Learning</h4>
+                    <p class="cert-card-desc">Professional training on HTML5 structure, semantics, and responsive web principles.</p>
+                    <span class="cert-zoom-hint"><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                  </div>
+                </div>
+                <div class="cert-card glass-panel">
+                  <div class="cert-card-image" style="background-image: url('/portfolio/certificates/python.jpg')"></div>
+                  <div class="cert-card-content">
+                    <h3 class="cert-card-title">Problem Solving and Python</h3>
+                    <h4 class="cert-card-issuer">Ebox</h4>
+                    <p class="cert-card-desc">Completed advanced problem-solving challenges and structured Python programming courses.</p>
+                    <span class="cert-zoom-hint"><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                  </div>
+                </div>
+                <div class="cert-card glass-panel">
+                  <div class="cert-card-image" style="background-image: url('/portfolio/certificates/prompt_engineering.png')"></div>
+                  <div class="cert-card-content">
+                    <h3 class="cert-card-title">Prompt Engineering for Everyone</h3>
+                    <h4 class="cert-card-issuer">IBM Cognitive Class</h4>
+                    <p class="cert-card-desc">Successfully completed and received a passing grade in Prompt Engineering (AI0117EN) on cognitiveclass.ai powered by IBM Developer Skills Network. Issued July 10, 2025.</p>
+                    <span class="cert-zoom-hint"><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                  </div>
+                </div>
+                <div class="cert-card glass-panel">
+                  <div class="cert-card-image" style="background-image: url('/portfolio/certificates/android_internship.png')"></div>
+                  <div class="cert-card-content">
+                    <h3 class="cert-card-title">Android Developer Virtual Internship</h3>
+                    <h4 class="cert-card-issuer">Google for Developers / AICTE EduSkills</h4>
+                    <p class="cert-card-desc">Completed 10 weeks of Android Developer Virtual Internship (July–September 2024) supported by India Edu Program – Google for Developers via National Internship Portal & AICTE.</p>
+                    <span class="cert-zoom-hint"><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                  </div>
+                </div>
+                <div class="cert-card glass-panel">
+                  <div class="cert-card-image" style="background-image: url('/portfolio/certificates/nptel_java.png')"></div>
+                  <div class="cert-card-content">
+                    <h3 class="cert-card-title">Programming In Java – Elite</h3>
+                    <h4 class="cert-card-issuer">NPTEL / IIT Kharagpur</h4>
+                    <p class="cert-card-desc">NPTEL Online Certification (Elite) for Programming in Java with a consolidated score of 73%. 12-week course, Jan–Apr 2025. Funded by MoE, Govt. of India. IIT Kharagpur.</p>
+                    <span class="cert-zoom-hint"><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                  </div>
+                </div>
+                <div class="cert-card glass-panel">
+                  <div class="cert-card-image" style="background-image: url('/portfolio/certificates/aiml_internship.png')"></div>
+                  <div class="cert-card-content">
+                    <h3 class="cert-card-title">AI-ML Virtual Internship</h3>
+                    <h4 class="cert-card-issuer">Google for Developers / AICTE EduSkills</h4>
+                    <p class="cert-card-desc">Completed 10 weeks of AI-ML Virtual Internship (April–June 2025) with Grade A. Supported by India Edu Program – Google for Developers via AICTE EduSkills.</p>
+                    <span class="cert-zoom-hint"><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                  </div>
+                </div>
+                <div class="cert-card glass-panel">
+                  <div class="cert-card-image" style="background-image: url('/portfolio/certificates/scaler_solid.png')"></div>
+                  <div class="cert-card-content">
+                    <h3 class="cert-card-title">S.O.L.I.D Principles Masterclass</h3>
+                    <h4 class="cert-card-issuer">Scaler Masterclass</h4>
+                    <p class="cert-card-desc">Certificate of Participation for upskilling in S.O.L.I.D Principles Every Developer Must Know – Scaler Masterclass, 11th November 2025.</p>
+                    <span class="cert-zoom-hint"><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact-section">
+        <div class="container">
+          <h2 class="section-title">Let's Connect</h2>
+          <div class="contact-grid">
+            <div class="contact-info-panel glass-panel">
+              <h3>Reach Out Anytime</h3>
+              <p>Feel free to ping me for internships, freelance services, full stack collaborations, or algorithm discussion!</p>
+              
+              <div class="info-items">
+                <div class="info-item">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <h4>Email</h4>
+                    <p>venkatesan.kumarsivan@gmail.com</p>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                  <div class="info-text">
+                    <h4>Phone</h4>
+                    <p>+91 6374717300</p>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                  <div class="info-text">
+                    <h4>Location</h4>
+                    <p>Tamil Nadu, India</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="social-links-footer">
+                <a href="https://github.com/venkatesanweb" target="_blank" rel="noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/venkatesan-kumar-71b8702b8/" target="_blank" rel="noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://leetcode.com/u/VENKATESAN_k/" target="_blank" rel="noreferrer" title="LeetCode"><i class="fas fa-code"></i></a>
+                <a href="https://codeforces.com/profile/venkatesan.kumarsivan" target="_blank" rel="noreferrer" title="Codeforces"><i class="fas fa-chart-line"></i></a>
+              </div>
+            </div>
+            
+            <div class="contact-form-container">
+              <form id="contact-form" class="contact-form glass-panel">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your Name" />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="Your Email" />
+                </div>
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="btn-primary form-submit-btn">
+                  <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer-panel">
+        <div class="container footer-container">
+          <p>&copy; 2026 Venkatesan Kumar. All rights reserved.</p>
+          <p class="footer-subtext">Engineered with Vanilla JS & CSS</p>
+        </div>
+      </footer>
+
+      <!-- Modals -->
+      <div id="project-modal-overlay" class="project-modal-overlay" style="display: none;">
+        <div class="project-modal glass-panel">
+          <button class="project-modal-close">&times;</button>
+          <div class="modal-hero-image"></div>
+          <div class="modal-body-content">
+            <h3 class="modal-project-title"></h3>
+            <div class="modal-project-tags"></div>
+            <p class="modal-project-desc"></p>
+            <div class="modal-footer-links"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="lightbox" class="lightbox" style="display: none;">
+        <div class="lightbox-content">
+          <button class="lightbox-close">&times;</button>
+          <img src="" alt="Certificate Zoom" id="lightbox-img" class="lightbox-img" />
+        </div>
+      </div>
+
+      <div id="success-modal-overlay" class="success-modal-overlay" style="display: none;">
+        <div class="success-modal glass-panel">
+          <button class="modal-close-btn">&times;</button>
+          <div class="success-icon-wrapper">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h2>Thank You!</h2>
+          <p>Your message has been sent successfully. I'll get back to you as soon as possible.</p>
+          <button class="btn-primary">Close</button>
+        </div>
+      </div>
+
+    </div>
   </body>
 </html>
