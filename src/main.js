@@ -19,7 +19,7 @@ const PROJECTS = [
     longDescription: "A comprehensive digital solution that automates the college admissions process. Students can apply, upload transcripts, track application status, and view results. Admins and approvers benefit from automated workflows, role-based dashboards, and audit logs. The system is secured using JSON Web Tokens (JWT) for authentication and authorization.",
     tech: ["React", "Spring Boot", "MySQL", "JWT", "REST API", "Git"],
     category: "react-fullstack",
-    image: "/certificates/admission_portal.png",
+    image: "certificates/admission_portal.png",
     github: "https://github.com/venkatesanweb/College-Admission-Portal",
     live: null
   },
@@ -30,7 +30,7 @@ const PROJECTS = [
     longDescription: "Replicates the key UI designs and user flows of the Amazon shopping portal. Features a responsive grid of products, simulated cart count calculations, slider carousels, and search bar layout. Entirely responsive across mobile, tablet, and desktop screens.",
     tech: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
     category: "frontend-js",
-    image: "/certificates/amazon-2.png",
+    image: "certificates/amazon-2.png",
     github: "https://github.com/venkatesanweb/Amazon_copy",
     live: "https://venkatesanweb.github.io/Amazon_copy/amazon.html"
   },
@@ -41,7 +41,7 @@ const PROJECTS = [
     longDescription: "A fully styled, engaging game allowing the player to compete against the computer. Keeps track of wins, losses, and ties across sessions using localStorage. Includes sound-like timing delays, hover interactions, and micro-animations.",
     tech: ["HTML5", "CSS3", "JavaScript", "Local Storage"],
     category: "frontend-js",
-    image: "/certificates/image.png",
+    image: "certificates/image.png",
     github: "https://github.com/venkatesanweb/Play-game",
     live: "https://venkatesanweb.github.io/Play-game/game.html"
   },
@@ -52,7 +52,7 @@ const PROJECTS = [
     longDescription: "Allows users to register, log in, create blog posts, comment on posts, and edit/delete their own content. The backend handles secure cookie sessions, CSRF protection, file storage for post media, and relational database queries with MySQL.",
     tech: ["Python", "Django", "MySQL", "HTML5", "CSS3"],
     category: "react-fullstack",
-    image: "/certificates/blog_app.png",
+    image: "certificates/blog_app.png",
     github: "https://github.com/venkatesanweb/blog_app",
     live: null
   },
@@ -63,7 +63,7 @@ const PROJECTS = [
     longDescription: "A premium UI storefront showing catalog filters (by category and pricing), animated fly-to-cart drawers, product details modal cards, and responsive form checkout processes.",
     tech: ["HTML5", "CSS3", "JavaScript", "UX Design"],
     category: "frontend-js",
-    image: "/certificates/Shop_fussion.png",
+    image: "certificates/Shop_fussion.png",
     github: "https://github.com/venkatesanweb/Purching_app",
     live: null
   },
@@ -74,7 +74,7 @@ const PROJECTS = [
     longDescription: "A full-featured password manager that allows users to securely store and manage their credentials. Features include encrypted password storage, master password authentication, category-based organization, and a clean intuitive interface for easy retrieval of saved credentials.",
     tech: ["HTML5", "CSS3", "JavaScript", "Local Storage"],
     category: "frontend-js",
-    image: "/certificates/password_manager.png",
+    image: "certificates/password_manager.png",
     github: "https://github.com/venkatesanweb/Password_manager",
     live: null
   }
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (project) {
           // Populate modal
-          document.querySelector('.modal-hero-image').style.backgroundImage = `url(${project.image || '/certificates/placeholder.png'})`;
+          document.querySelector('.modal-hero-image').style.backgroundImage = `url(${project.image || 'certificates/placeholder.png'})`;
           document.querySelector('.modal-project-title').textContent = project.title;
           document.querySelector('.modal-project-desc').textContent = project.longDescription;
           
