@@ -92,6 +92,12 @@ const PROJECTS = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Ensure page starts at top (navbar & hero visible)
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+
   // Navigation
   const navMenu = document.querySelector('.nav-menu');
   const navToggle = document.querySelector('.nav-toggle');
@@ -233,7 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
       terminalBody.insertBefore(div, inputLine);
     });
     
-    terminalEndRef.scrollIntoView({ behavior: 'smooth' });
+    // Scroll terminal container internally without jumping the main window scroll position
+    terminalBody.scrollTop = terminalBody.scrollHeight;
   }
 
   function executeCommand(cmd) {
