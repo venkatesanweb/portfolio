@@ -77,6 +77,17 @@ const PROJECTS = [
     image: "certificates/password_manager.png",
     github: "https://github.com/venkatesanweb/Password_manager",
     live: null
+  },
+  {
+    id: 7,
+    title: "Multilingual Gov. Scheme Assistant",
+    description: "An AI-powered multilingual assistant that helps citizens discover government schemes in their native language using NLP and voice input.",
+    longDescription: "An intelligent conversational assistant that bridges the information gap between citizens and government welfare schemes. Uses Natural Language Processing (NLP) to understand queries in multiple Indian languages (Tamil, Hindi, English) and retrieves relevant scheme details. Includes voice-input support, scheme eligibility filtering, and an intuitive chat interface built with Flask and Python.",
+    tech: ["Python", "NLP", "Flask", "Machine Learning", "TensorFlow", "REST API"],
+    category: "ai-ml",
+    image: null,
+    github: "https://github.com/venkatesanweb/Multilingual-Government-Scheme-Assistant",
+    live: null
   }
 ];
 
@@ -475,3 +486,249 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+// ─── Tech Grid & Node Network Animation ─────────────────────────────────────
+
+(function initMouseAnimation() {
+  const canvas = document.getElementById('mouse-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let W = canvas.width  = window.innerWidth;
+  let H = canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    initGrid();
+  });
+
+  // ── Config ──────────────────────────────────────────────────────────────
+  const CYAN   = '0,212,255';
+  const BLUE   = '59,123,248';
+  const VIOLET = '168,85,247';
+
+  let mouseX = W / 2, mouseY = H / 2;
+  let targetX = mouseX, targetY = mouseY;
+
+  window.addEventListener('mousemove', e => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+    addTrail(e.clientX, e.clientY);
+  });
+
+  // ── 1. GRID LINES ───────────────────────────────────────────────────────
+  const GRID = 60;
+  function drawGrid() {
+    ctx.save();
+    for (let x = 0; x <= W; x += GRID) {
+      const dx = x - mouseX, dy = 0 - mouseY;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      const glow = Math.max(0, 1 - dist / 500) * 0.08;
+      ctx.strokeStyle = `rgba(${CYAN},${(0.04 + glow).toFixed(3)})`;
+      ctx.lineWidth = 0.5;
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+    }
+    for (let y = 0; y <= H; y += GRID) {
+      const dx = mouseX - 0, dy = y - mouseY;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      const glow = Math.max(0, 1 - dist / 500) * 0.08;
+      ctx.strokeStyle = `rgba(${CYAN},${(0.04 + glow).toFixed(3)})`;
+      ctx.lineWidth = 0.5;
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  // ── 2. FLOATING NODES ───────────────────────────────────────────────────
+  const NODE_COUNT = 55;
+  const nodes = [];
+
+  function initGrid() {
+    nodes.length = 0;
+    for (let i = 0; i < NODE_COUNT; i++) {
+      nodes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 1.8 + 0.5,
+        color: [CYAN, BLUE, VIOLET][Math.floor(Math.random() * 3)],
+        pulse: Math.random() * Math.PI * 2,
+      });
+    }
+  }
+  initGrid();
+
+  function drawNodes() {
+    nodes.forEach(n => {
+      n.x += n.vx; n.y += n.vy;
+      n.pulse += 0.02;
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+
+      const glow = 0.5 + 0.5 * Math.sin(n.pulse);
+      const dx = n.x - mouseX, dy = n.y - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const proximity = Math.max(0, 1 - dist / 200);
+
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r + proximity * 2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${n.color},${(0.4 + glow * 0.5 + proximity * 0.5).toFixed(2)})`;
+      ctx.shadowBlur  = 10 + proximity * 20;
+      ctx.shadowColor = `rgba(${n.color},0.9)`;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    });
+
+    // Connections
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 130) {
+          const alpha = (1 - dist / 130) * 0.2;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = `rgba(${CYAN},${alpha.toFixed(3)})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  // ── 3. MOUSE GLOW ───────────────────────────────────────────────────────
+  function drawMouseGlow() {
+    mouseX += (targetX - mouseX) * 0.07;
+    mouseY += (targetY - mouseY) * 0.07;
+
+    const g = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 220);
+    g.addColorStop(0,   `rgba(${CYAN},0.12)`);
+    g.addColorStop(0.4, `rgba(${BLUE},0.05)`);
+    g.addColorStop(1,   'rgba(0,0,0,0)');
+    ctx.beginPath();
+    ctx.arc(mouseX, mouseY, 220, 0, Math.PI * 2);
+    ctx.fillStyle = g;
+    ctx.fill();
+
+    // Inner bright core
+    const g2 = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 40);
+    g2.addColorStop(0, `rgba(${CYAN},0.18)`);
+    g2.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.beginPath();
+    ctx.arc(mouseX, mouseY, 40, 0, Math.PI * 2);
+    ctx.fillStyle = g2;
+    ctx.fill();
+  }
+
+  // ── 4. CURSOR TRAIL ─────────────────────────────────────────────────────
+  const trail = [];
+  function addTrail(x, y) {
+    trail.push({ x, y, life: 1.0, size: Math.random() * 3 + 1 });
+    if (trail.length > 40) trail.shift();
+  }
+
+  function drawTrail() {
+    for (let i = trail.length - 1; i >= 0; i--) {
+      const t = trail[i];
+      t.life -= 0.04;
+      if (t.life <= 0) { trail.splice(i, 1); continue; }
+      ctx.beginPath();
+      ctx.arc(t.x, t.y, t.size * t.life, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${CYAN},${(t.life * 0.7).toFixed(2)})`;
+      ctx.shadowBlur  = 6;
+      ctx.shadowColor = `rgba(${CYAN},0.8)`;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+  }
+
+  // ── 5. SCAN LINE ────────────────────────────────────────────────────────
+  let scanY = 0;
+  function drawScanLine() {
+    scanY = (scanY + 0.8) % H;
+    const g = ctx.createLinearGradient(0, scanY - 40, 0, scanY + 40);
+    g.addColorStop(0, 'rgba(0,212,255,0)');
+    g.addColorStop(0.5, 'rgba(0,212,255,0.03)');
+    g.addColorStop(1, 'rgba(0,212,255,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, scanY - 40, W, 80);
+  }
+
+  // ── Main Loop ────────────────────────────────────────────────────────────
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    drawGrid();
+    drawScanLine();
+    drawMouseGlow();
+    drawNodes();
+    drawTrail();
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // ── Custom Cursor ────────────────────────────────────────────────────────
+  const cursorDot  = document.getElementById('cursor-dot');
+  const cursorRing = document.getElementById('cursor-ring');
+
+  if (cursorDot && cursorRing) {
+    let ringX = 0, ringY = 0;
+    let dotX = 0, dotY = 0;
+    let visible = false;
+    let isHovering = false;
+
+    document.addEventListener('mousemove', e => {
+      if (!visible) {
+        cursorDot.style.opacity  = '1';
+        cursorRing.style.opacity = '1';
+        visible = true;
+      }
+      dotX = e.clientX; dotY = e.clientY;
+      cursorDot.style.left = dotX + 'px';
+      cursorDot.style.top  = dotY + 'px';
+
+      const el = document.elementFromPoint(e.clientX, e.clientY);
+      isHovering = el && (el.tagName === 'A' || el.tagName === 'BUTTON' || el.closest('a, button'));
+      if (isHovering) {
+        cursorRing.style.width  = '50px';
+        cursorRing.style.height = '50px';
+        cursorRing.style.borderColor = `rgba(168,85,247,0.8)`;
+        cursorRing.style.boxShadow   = `0 0 20px rgba(168,85,247,0.4)`;
+      } else {
+        cursorRing.style.width  = '32px';
+        cursorRing.style.height = '32px';
+        cursorRing.style.borderColor = `rgba(0,212,255,0.6)`;
+        cursorRing.style.boxShadow   = `0 0 10px rgba(0,212,255,0.25)`;
+      }
+    });
+
+    function animRing() {
+      ringX += (dotX - ringX) * 0.11;
+      ringY += (dotY - ringY) * 0.11;
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top  = ringY + 'px';
+      requestAnimationFrame(animRing);
+    }
+    animRing();
+
+    document.addEventListener('mouseleave', () => {
+      cursorDot.style.opacity  = '0';
+      cursorRing.style.opacity = '0';
+      visible = false;
+    });
+
+    document.addEventListener('mousedown', () => {
+      cursorDot.style.transform  = 'translate(-50%,-50%) scale(2)';
+      cursorDot.style.background = 'rgba(0,212,255,0.5)';
+      cursorRing.style.transform = 'translate(-50%,-50%) scale(0.6)';
+    });
+    document.addEventListener('mouseup', () => {
+      cursorDot.style.transform  = 'translate(-50%,-50%) scale(1)';
+      cursorDot.style.background = 'var(--neon-cyan, #00D4FF)';
+      cursorRing.style.transform = 'translate(-50%,-50%) scale(1)';
+    });
+  }
+})();
