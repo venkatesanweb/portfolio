@@ -11,10 +11,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script type="module" crossorigin src="/portfolio/assets/index-CdhdN4Zj.js"></script>
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-BAjP13id.css">
+    <script type="module" crossorigin src="/portfolio/assets/index-RKiVOobl.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-CuTTOHMK.css">
   </head>
   <body>
+    <!-- Mouse animation canvas -->
+    <canvas id="mouse-canvas"></canvas>
+    <!-- Custom cursor elements -->
+    <div class="cursor-glow cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-glow cursor-ring" id="cursor-ring"></div>
     <div class="portfolio-app">
       <!-- Navigation -->
       <nav class="navbar">
@@ -103,7 +108,7 @@
               <div class="coding-stats">
                 <div class="stat-row">
                   <span>Solved Problems</span>
-                  <span class="stat-val">750+</span>
+                  <span class="stat-val">960+</span>
                 </div>
                 <div class="stat-row">
                   <span>Difficulty</span>
@@ -126,7 +131,7 @@
               <div class="coding-stats">
                 <div class="stat-row">
                   <span>Solved Problems</span>
-                  <span class="stat-val">250+</span>
+                  <span class="stat-val">370+</span>
                 </div>
                 <div class="stat-row">
                   <span>Languages</span>
@@ -134,6 +139,37 @@
                 </div>
               </div>
               <a href="https://codeforces.com/profile/venkatesan.kumarsivan" target="_blank" rel="noopener noreferrer" class="btn-secondary coding-profile-link">
+                <i class="fas fa-external-link-alt"></i> View Profile
+              </a>
+            </div>
+
+            <div class="coding-card glass-panel">
+              <div class="coding-card-header">
+                <div class="brand-logo hackerrank">
+                  <i class="fab fa-hackerrank"></i>
+                </div>
+                <h3>HackerRank</h3>
+              </div>
+              <p class="profile-handle">@venkatesan_kuma1</p>
+              <div class="coding-stats">
+                <div class="stat-row">
+                  <span>Java</span>
+                  <span class="stat-val text-success">★★★★★ 5-Star</span>
+                </div>
+                <div class="stat-row">
+                  <span>Python</span>
+                  <span class="stat-val text-success">★★★★★ 5-Star</span>
+                </div>
+                <div class="stat-row">
+                  <span>Problem Solving</span>
+                  <span class="stat-val" style="color:#f59e0b">★★★★☆ 4-Star</span>
+                </div>
+                <div class="stat-row">
+                  <span>C Language</span>
+                  <span class="stat-val" style="color:#f59e0b">★★★★☆ 4-Star</span>
+                </div>
+              </div>
+              <a href="https://www.hackerrank.com/profile/venkatesan_kuma1" target="_blank" rel="noopener noreferrer" class="btn-secondary coding-profile-link">
                 <i class="fas fa-external-link-alt"></i> View Profile
               </a>
             </div>
@@ -148,11 +184,36 @@
           
           <div class="project-filters">
             <button data-filter="all" class="filter-btn active">All</button>
-            <button data-filter="react-fullstack" class="filter-btn">React & Fullstack</button>
+            <button data-filter="react-fullstack" class="filter-btn">React &amp; Fullstack</button>
             <button data-filter="frontend-js" class="filter-btn">Frontend JS</button>
+            <button data-filter="ai-ml" class="filter-btn">AI / ML</button>
           </div>
 
           <div class="projects-grid">
+              <div class="project-card glass-panel" data-id="7" data-category="ai-ml">
+                <div class="project-card-image project-card-placeholder">
+                  <div class="placeholder-icon">
+                    <i class="fas fa-language"></i>
+                  </div>
+                  <div class="project-card-overlay">
+                    <button class="view-details-btn">
+                      <i class="fas fa-expand-alt"></i> View Details
+                    </button>
+                  </div>
+                </div>
+                <div class="project-card-content">
+                  <h3 class="project-card-title">Multilingual Gov. Scheme Assistant</h3>
+                  <p class="project-card-desc">An AI-powered multilingual assistant that helps citizens discover government schemes in their native language using NLP and voice input.</p>
+                  <div class="project-card-tech">
+                    <span class="tech-badge">Python</span><span class="tech-badge">NLP</span><span class="tech-badge">Flask</span>
+                    <span class="tech-badge-more">+3</span>
+                  </div>
+                  <div class="project-card-links" onclick="event.stopPropagation()">
+                    <a href="https://github.com/venkatesanweb/Multilingual-Government-Scheme-Assistant" target="_blank" rel="noopener noreferrer" class="card-link-btn" title="View Source Code"><i class="fab fa-github"></i> Code</a>
+                  </div>
+                </div>
+              </div>
+
               <div class="project-card glass-panel" data-id="1" data-category="react-fullstack">
                 <div class="project-card-image" style="background-image: url('certificates/admission_portal.png')">
                   <div class="project-card-overlay">
@@ -534,13 +595,15 @@
               
               <div id="experience-list" class="timeline-list">
                   <div class="timeline-card-wrapper">
-                    <div class="timeline-dot-indicator"><i class="fas fa-laptop-code"></i></div>
+                    <div class="timeline-dot-indicator"><i class="fas fa-briefcase"></i></div>
                     <div class="timeline-card glass-panel">
-                      <span class="timeline-period">May 2024 - Present</span>
-                      <h3 class="timeline-role">Freelancer - Full Stack Developer</h3>
-                      <h4 class="timeline-company">Self-Employed</h4>
+                      <span class="timeline-period">Sep 2025 - Feb 2026 · 6 mos</span>
+                      <h3 class="timeline-role">Technical Intern</h3>
+                      <h4 class="timeline-company"><a href="https://www.linkedin.com/in/venkatesan-kumar-71b8702b8/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Aakam360</a> · Internship</h4>
+                      <p class="timeline-location" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;"><i class="fas fa-map-marker-alt" style="color: var(--neon-cyan); margin-right: 4px;"></i> Salem, Tamil Nadu, India · On-site</p>
                       <ul class="timeline-points">
-                        <li>Architect and deliver end-to-end full-stack web applications for local clients.</li><li>Integrate responsive frontends with Python/Django and Node.js backends.</li><li>Optimize SQL database schemas and ensure clean, structured code practices.</li>
+                        <li>Gained hands-on experience with modern technologies and industry-oriented development practices.</li>
+                        <li>Strengthened technical foundation in software development, problem-solving, and real-world project implementation.</li>
                       </ul>
                     </div>
                   </div>
