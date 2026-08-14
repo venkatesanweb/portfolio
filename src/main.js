@@ -85,7 +85,7 @@ const PROJECTS = [
     longDescription: "An intelligent conversational assistant that bridges the information gap between citizens and government welfare schemes. Uses Natural Language Processing (NLP) to understand queries in multiple Indian languages (Tamil, Hindi, English) and retrieves relevant scheme details. Includes voice-input support, scheme eligibility filtering, and an intuitive chat interface built with Flask and Python.",
     tech: ["Python", "NLP", "Flask", "Machine Learning", "TensorFlow", "REST API"],
     category: "ai-ml",
-    image: null,
+    image: "certificates/gov_scheme.png",
     github: "https://github.com/venkatesanweb/Multilingual-Government-Scheme-Assistant",
     live: null
   }
