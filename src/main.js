@@ -492,6 +492,91 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Live Profile Stats Syncing Logic (LeetCode, Codeforces, GitHub)
+  async function fetchLiveStats() {
+    const syncBtn = document.getElementById('refresh-stats-btn');
+    const syncIcon = document.getElementById('sync-icon');
+    const syncText = document.getElementById('sync-btn-text');
+    const syncBadge = document.getElementById('sync-status-badge');
+
+    if (syncIcon) syncIcon.classList.add('fa-spin');
+    if (syncText) syncText.textContent = 'Syncing...';
+    if (syncBtn) syncBtn.disabled = true;
+
+    try {
+      // 1. Fetch LeetCode Stats
+      try {
+        const lcRes = await fetch('https://alfa-leetcode-api.onrender.com/VENKATESAN_k/solved');
+        if (lcRes.ok) {
+          const lcData = await lcRes.json();
+          if (lcData && lcData.solvedProblem) {
+            const lcCountEl = document.getElementById('leetcode-solved-count');
+            const lcBreakdownEl = document.getElementById('leetcode-breakdown');
+            if (lcCountEl) lcCountEl.textContent = `${lcData.solvedProblem}+`;
+            if (lcBreakdownEl && lcData.easySolved !== undefined) {
+              lcBreakdownEl.textContent = `${lcData.easySolved}E / ${lcData.mediumSolved}M / ${lcData.hardSolved}H`;
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('LeetCode live fetch warning:', err);
+      }
+
+      // 2. Fetch Codeforces Stats
+      try {
+        const cfRes = await fetch('https://codeforces.com/api/user.status?handle=venkatesan.kumarsivan');
+        if (cfRes.ok) {
+          const cfData = await cfRes.json();
+          if (cfData.status === 'OK' && Array.isArray(cfData.result)) {
+            const solvedSet = new Set(
+              cfData.result
+                .filter(s => s.verdict === 'OK')
+                .map(s => `${s.problem.contestId}-${s.problem.index}`)
+            );
+            const cfCountEl = document.getElementById('codeforces-solved-count');
+            if (cfCountEl) cfCountEl.textContent = `${solvedSet.size}+`;
+          }
+        }
+      } catch (err) {
+        console.warn('Codeforces live fetch warning:', err);
+      }
+
+      // 3. Fetch GitHub Stats
+      try {
+        const ghRes = await fetch('https://api.github.com/users/venkatesanweb');
+        if (ghRes.ok) {
+          const ghData = await ghRes.json();
+          if (ghData && ghData.public_repos !== undefined) {
+            const ghReposEl = document.getElementById('github-repos-count');
+            if (ghReposEl) ghReposEl.textContent = `${ghData.public_repos} Repos`;
+          }
+        }
+      } catch (err) {
+        console.warn('GitHub live fetch warning:', err);
+      }
+
+      // Show temporary success badge
+      if (syncBadge) {
+        syncBadge.style.display = 'inline-flex';
+        setTimeout(() => {
+          syncBadge.style.display = 'none';
+        }, 4000);
+      }
+
+    } finally {
+      if (syncIcon) syncIcon.classList.remove('fa-spin');
+      if (syncText) syncText.textContent = 'Sync Live Stats';
+      if (syncBtn) syncBtn.disabled = false;
+    }
+  }
+
+  const refreshBtn = document.getElementById('refresh-stats-btn');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', fetchLiveStats);
+    // Fetch live stats on page load
+    fetchLiveStats();
+  }
+
 });
 
 // ─── Tech Grid & Node Network Animation ─────────────────────────────────────
