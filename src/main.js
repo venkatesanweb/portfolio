@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn('LeetCode live fetch warning:', err);
       }
 
-      // 2. Fetch Codeforces Stats
+      // 2. Fetch Codeforces Stats & Heatmap
       try {
         const cfRes = await fetch('https://codeforces.com/api/user.status?handle=venkatesan.kumarsivan');
         if (cfRes.ok) {
@@ -536,6 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
             );
             const cfCountEl = document.getElementById('codeforces-solved-count');
             if (cfCountEl) cfCountEl.textContent = `${solvedSet.size}+`;
+            renderCodeforcesHeatmap(cfData.result);
           }
         }
       } catch (err) {
@@ -637,9 +638,86 @@ document.addEventListener('DOMContentLoaded', () => {
 
       cell.className = `heatmap-cell level-${level}`;
 
-      cell.addEventListener('mouseenter', (e) => {
+      cell.addEventListener('mouseenter', () => {
         const formattedDate = day.dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
         tooltip.textContent = `${day.count} submission${day.count === 1 ? '' : 's'} on ${formattedDate}`;
+        tooltip.style.opacity = '1';
+      });
+
+      cell.addEventListener('mousemove', (e) => {
+        tooltip.style.left = (e.pageX + 10) + 'px';
+        tooltip.style.top = (e.pageY - 28) + 'px';
+      });
+
+      cell.addEventListener('mouseleave', () => {
+        tooltip.style.opacity = '0';
+      });
+
+      gridContainer.appendChild(cell);
+    });
+  }
+
+  // Codeforces Heatmap Grid Generator
+  function renderCodeforcesHeatmap(resultList) {
+    const gridContainer = document.getElementById('codeforces-heatmap-grid');
+    const totalSubmissionsEl = document.getElementById('cf-heatmap-total-submissions');
+    const activeDaysEl = document.getElementById('cf-heatmap-active-days');
+    const uniqueSolvedEl = document.getElementById('cf-heatmap-unique-solved');
+    if (!gridContainer) return;
+
+    gridContainer.innerHTML = '';
+
+    const dateMap = {};
+    const uniqueSolvedSet = new Set();
+    let totalAcSubmissions = 0;
+
+    resultList.forEach(s => {
+      if (s.verdict === 'OK') {
+        totalAcSubmissions++;
+        uniqueSolvedSet.add(`${s.problem.contestId}-${s.problem.index}`);
+        const date = new Date(s.creationTimeSeconds * 1000);
+        const dateStr = date.toISOString().split('T')[0];
+        dateMap[dateStr] = (dateMap[dateStr] || 0) + 1;
+      }
+    });
+
+    const activeDays = Object.keys(dateMap).length;
+
+    if (totalSubmissionsEl) totalSubmissionsEl.textContent = totalAcSubmissions.toLocaleString();
+    if (activeDaysEl) activeDaysEl.textContent = activeDays.toString();
+    if (uniqueSolvedEl) uniqueSolvedEl.textContent = uniqueSolvedSet.size.toString();
+
+    const today = new Date();
+    const days = [];
+
+    for (let i = 363; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const dateStr = d.toISOString().split('T')[0];
+      const count = dateMap[dateStr] || 0;
+      days.push({ dateStr, count, dayOfWeek: d.getDay(), dateObj: d });
+    }
+
+    let tooltip = document.querySelector('.heatmap-tooltip');
+    if (!tooltip) {
+      tooltip = document.createElement('div');
+      tooltip.className = 'heatmap-tooltip';
+      document.body.appendChild(tooltip);
+    }
+
+    days.forEach(day => {
+      const cell = document.createElement('div');
+      let level = 0;
+      if (day.count >= 8) level = 4;
+      else if (day.count >= 5) level = 3;
+      else if (day.count >= 2) level = 2;
+      else if (day.count >= 1) level = 1;
+
+      cell.className = `heatmap-cell level-${level}`;
+
+      cell.addEventListener('mouseenter', () => {
+        const formattedDate = day.dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        tooltip.textContent = `${day.count} Codeforces AC submission${day.count === 1 ? '' : 's'} on ${formattedDate}`;
         tooltip.style.opacity = '1';
       });
 
@@ -672,22 +750,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Heatmap Tab Switcher
   const tabLeetCode = document.getElementById('heatmap-tab-leetcode');
-  const tabGitHub = document.getElementById('heatmap-tab-github');
+  const tabCodeforces = document.getElementById('heatmap-tab-codeforces');
   const viewLeetCode = document.getElementById('leetcode-heatmap-view');
-  const viewGitHub = document.getElementById('github-heatmap-view');
+  const viewCodeforces = document.getElementById('codeforces-heatmap-view');
 
-  if (tabLeetCode && tabGitHub && viewLeetCode && viewGitHub) {
+  if (tabLeetCode && tabCodeforces && viewLeetCode && viewCodeforces) {
     tabLeetCode.addEventListener('click', () => {
       tabLeetCode.classList.add('active');
-      tabGitHub.classList.remove('active');
+      tabCodeforces.classList.remove('active');
       viewLeetCode.style.display = 'block';
-      viewGitHub.style.display = 'none';
+      viewCodeforces.style.display = 'none';
     });
-    tabGitHub.addEventListener('click', () => {
-      tabGitHub.classList.add('active');
+    tabCodeforces.addEventListener('click', () => {
+      tabCodeforces.classList.add('active');
       tabLeetCode.classList.remove('active');
       viewLeetCode.style.display = 'none';
-      viewGitHub.style.display = 'block';
+      viewCodeforces.style.display = 'block';
     });
   }
 
