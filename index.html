@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script type="module" crossorigin src="/portfolio/assets/index-BH9BPLiH.js"></script>
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-BUGehlDl.css">
+    <script type="module" crossorigin src="/portfolio/assets/index-N6Gza3I9.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-eTSaG6fk.css">
   </head>
   <body>
     <!-- Mouse animation canvas -->
@@ -92,10 +92,18 @@
         </div>
       </section>
 
-      <!-- Competitive Coding Profiles -->
+      <!-- Competitive Coding & Developer Profiles -->
       <section id="coding" class="coding-section">
         <div class="container">
-          <h2 class="section-title">Competitive Programming</h2>
+          <h2 class="section-title">Coding &amp; Developer Profiles</h2>
+          
+          <div style="text-align: center; margin-top: -2.5rem; margin-bottom: 2.5rem;">
+            <button id="refresh-stats-btn" class="btn-secondary" style="gap: 8px; font-size: 0.85rem; padding: 0.6rem 1.4rem;">
+              <i class="fas fa-sync-alt" id="sync-icon"></i> <span id="sync-btn-text">Sync Live Stats</span>
+            </button>
+            <span id="sync-status-badge" style="display: none; margin-left: 10px; font-size: 0.8rem; color: #059669; font-weight: 600;"><i class="fas fa-check-circle"></i> Live Data Synced</span>
+          </div>
+
           <div class="coding-profiles-grid">
             <div class="coding-card glass-panel">
               <div class="coding-card-header">
@@ -108,11 +116,11 @@
               <div class="coding-stats">
                 <div class="stat-row">
                   <span>Solved Problems</span>
-                  <span class="stat-val">960+</span>
+                  <span class="stat-val" id="leetcode-solved-count">1230+</span>
                 </div>
                 <div class="stat-row">
                   <span>Difficulty</span>
-                  <span class="stat-val text-success">Easy / Medium / Hard</span>
+                  <span class="stat-val text-success" id="leetcode-breakdown">508E / 512M / 212H</span>
                 </div>
               </div>
               <a href="https://leetcode.com/u/VENKATESAN_k/" target="_blank" rel="noopener noreferrer" class="btn-secondary coding-profile-link">
@@ -131,7 +139,7 @@
               <div class="coding-stats">
                 <div class="stat-row">
                   <span>Solved Problems</span>
-                  <span class="stat-val">370+</span>
+                  <span class="stat-val" id="codeforces-solved-count">400+</span>
                 </div>
                 <div class="stat-row">
                   <span>Languages</span>
@@ -162,14 +170,37 @@
                 </div>
                 <div class="stat-row">
                   <span>Problem Solving</span>
-                  <span class="stat-val" style="color:#f59e0b">★★★★☆ 4-Star</span>
+                  <span class="stat-val" style="color:#D97706">★★★★☆ 4-Star</span>
                 </div>
                 <div class="stat-row">
                   <span>C Language</span>
-                  <span class="stat-val" style="color:#f59e0b">★★★★☆ 4-Star</span>
+                  <span class="stat-val" style="color:#D97706">★★★★☆ 4-Star</span>
                 </div>
               </div>
               <a href="https://www.hackerrank.com/profile/venkatesan_kuma1" target="_blank" rel="noopener noreferrer" class="btn-secondary coding-profile-link">
+                <i class="fas fa-external-link-alt"></i> View Profile
+              </a>
+            </div>
+
+            <div class="coding-card glass-panel">
+              <div class="coding-card-header">
+                <div class="brand-logo github">
+                  <i class="fab fa-github"></i>
+                </div>
+                <h3>GitHub</h3>
+              </div>
+              <p class="profile-handle">@venkatesanweb</p>
+              <div class="coding-stats">
+                <div class="stat-row">
+                  <span>Public Repos</span>
+                  <span class="stat-val" id="github-repos-count">22 Repos</span>
+                </div>
+                <div class="stat-row">
+                  <span>Activity</span>
+                  <span class="stat-val text-success" id="github-status">Active Contributor</span>
+                </div>
+              </div>
+              <a href="https://github.com/venkatesanweb" target="_blank" rel="noopener noreferrer" class="btn-secondary coding-profile-link">
                 <i class="fas fa-external-link-alt"></i> View Profile
               </a>
             </div>
