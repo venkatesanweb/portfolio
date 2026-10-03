@@ -11,7 +11,7 @@
 }
 
 .timeline-tab-btn {
-  background: rgba(255, 255, 255, 0.04);
+  background: #FFFFFF;
   border: 1px solid var(--border-subtle);
   color: var(--text-muted);
   padding: 10px 24px;
@@ -24,12 +24,13 @@
   align-items: center;
   gap: 8px;
   transition: var(--transition-smooth);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
 }
 
 .timeline-tab-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: #F1F5F9;
   color: var(--text-main);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: #CBD5E1;
 }
 
 .timeline-tab-btn.active {
@@ -51,8 +52,8 @@
   left: 20px;
   width: 2px;
   background: linear-gradient(to bottom, var(--neon-blue), var(--neon-purple));
-  opacity: 0.5;
-  box-shadow: 0 0 8px rgba(139, 92, 246, 0.3);
+  opacity: 0.6;
+  box-shadow: 0 0 8px rgba(124, 58, 237, 0.2);
 }
 
 .timeline-list {
@@ -72,7 +73,7 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: var(--bg-deep);
+  background: #FFFFFF;
   border: 2px solid var(--neon-purple);
   color: var(--neon-purple);
   display: flex;
@@ -80,7 +81,7 @@
   align-items: center;
   font-size: 0.95rem;
   z-index: 2;
-  box-shadow: 0 0 12px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.2);
   transition: var(--transition-smooth);
 }
 
@@ -88,26 +89,29 @@
   background: var(--neon-purple);
   color: #fff;
   transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
 }
 
 .timeline-card {
   padding: 2rem;
+  background: #FFFFFF;
   border: 1px solid var(--border-subtle);
   transition: var(--transition-smooth);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  border-radius: 16px;
 }
 
 .timeline-card:hover {
   transform: translateX(8px);
-  border-color: var(--border-glow);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), var(--shadow-purple);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12), var(--shadow-purple);
 }
 
 .timeline-period {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--neon-blue);
-  font-weight: 600;
+  font-weight: 700;
   display: inline-block;
   margin-bottom: 8px;
 }
@@ -115,7 +119,7 @@
 .timeline-role {
   font-size: 1.35rem;
   font-weight: 700;
-  color: #fff;
+  color: #0F172A;
   margin-bottom: 4px;
 }
 
@@ -171,3 +175,4 @@
     padding: 1.5rem;
   }
 }
+

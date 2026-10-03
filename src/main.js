@@ -511,9 +511,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── Config ──────────────────────────────────────────────────────────────
-  const CYAN   = '0,212,255';
-  const BLUE   = '59,123,248';
-  const VIOLET = '168,85,247';
+  const CYAN   = '37,99,235';   /* Royal Cobalt Blue */
+  const BLUE   = '99,102,241';  /* Indigo */
+  const VIOLET = '124,58,237';  /* Violet */
 
   let mouseX = W / 2, mouseY = H / 2;
   let targetX = mouseX, targetY = mouseY;
@@ -581,9 +581,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.r + proximity * 2, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${n.color},${(0.4 + glow * 0.5 + proximity * 0.5).toFixed(2)})`;
-      ctx.shadowBlur  = 10 + proximity * 20;
-      ctx.shadowColor = `rgba(${n.color},0.9)`;
+      ctx.fillStyle = `rgba(${n.color},${(0.35 + glow * 0.4 + proximity * 0.4).toFixed(2)})`;
+      ctx.shadowBlur  = 8 + proximity * 15;
+      ctx.shadowColor = `rgba(${n.color},0.6)`;
       ctx.fill();
       ctx.shadowBlur = 0;
     });
@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dx = a.x - b.x, dy = a.y - b.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 130) {
-          const alpha = (1 - dist / 130) * 0.2;
+          const alpha = (1 - dist / 130) * 0.18;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
@@ -613,9 +613,9 @@ document.addEventListener('DOMContentLoaded', () => {
     mouseY += (targetY - mouseY) * 0.07;
 
     const g = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 220);
-    g.addColorStop(0,   `rgba(${CYAN},0.12)`);
-    g.addColorStop(0.4, `rgba(${BLUE},0.05)`);
-    g.addColorStop(1,   'rgba(0,0,0,0)');
+    g.addColorStop(0,   `rgba(${CYAN},0.08)`);
+    g.addColorStop(0.4, `rgba(${BLUE},0.03)`);
+    g.addColorStop(1,   'rgba(255,255,255,0)');
     ctx.beginPath();
     ctx.arc(mouseX, mouseY, 220, 0, Math.PI * 2);
     ctx.fillStyle = g;
@@ -623,8 +623,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inner bright core
     const g2 = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 40);
-    g2.addColorStop(0, `rgba(${CYAN},0.18)`);
-    g2.addColorStop(1, 'rgba(0,0,0,0)');
+    g2.addColorStop(0, `rgba(${CYAN},0.12)`);
+    g2.addColorStop(1, 'rgba(255,255,255,0)');
     ctx.beginPath();
     ctx.arc(mouseX, mouseY, 40, 0, Math.PI * 2);
     ctx.fillStyle = g2;
@@ -645,9 +645,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (t.life <= 0) { trail.splice(i, 1); continue; }
       ctx.beginPath();
       ctx.arc(t.x, t.y, t.size * t.life, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${CYAN},${(t.life * 0.7).toFixed(2)})`;
+      ctx.fillStyle = `rgba(${CYAN},${(t.life * 0.6).toFixed(2)})`;
       ctx.shadowBlur  = 6;
-      ctx.shadowColor = `rgba(${CYAN},0.8)`;
+      ctx.shadowColor = `rgba(${CYAN},0.6)`;
       ctx.fill();
       ctx.shadowBlur = 0;
     }
@@ -658,9 +658,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function drawScanLine() {
     scanY = (scanY + 0.8) % H;
     const g = ctx.createLinearGradient(0, scanY - 40, 0, scanY + 40);
-    g.addColorStop(0, 'rgba(0,212,255,0)');
-    g.addColorStop(0.5, 'rgba(0,212,255,0.03)');
-    g.addColorStop(1, 'rgba(0,212,255,0)');
+    g.addColorStop(0, 'rgba(37,99,235,0)');
+    g.addColorStop(0.5, 'rgba(37,99,235,0.03)');
+    g.addColorStop(1, 'rgba(37,99,235,0)');
     ctx.fillStyle = g;
     ctx.fillRect(0, scanY - 40, W, 80);
   }
@@ -702,13 +702,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isHovering) {
         cursorRing.style.width  = '50px';
         cursorRing.style.height = '50px';
-        cursorRing.style.borderColor = `rgba(168,85,247,0.8)`;
-        cursorRing.style.boxShadow   = `0 0 20px rgba(168,85,247,0.4)`;
+        cursorRing.style.borderColor = `rgba(124,58,237,0.8)`;
+        cursorRing.style.boxShadow   = `0 0 20px rgba(124,58,237,0.3)`;
       } else {
         cursorRing.style.width  = '32px';
         cursorRing.style.height = '32px';
-        cursorRing.style.borderColor = `rgba(0,212,255,0.6)`;
-        cursorRing.style.boxShadow   = `0 0 10px rgba(0,212,255,0.25)`;
+        cursorRing.style.borderColor = `rgba(37,99,235,0.6)`;
+        cursorRing.style.boxShadow   = `0 0 10px rgba(37,99,235,0.2)`;
       }
     });
 
@@ -729,13 +729,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('mousedown', () => {
       cursorDot.style.transform  = 'translate(-50%,-50%) scale(2)';
-      cursorDot.style.background = 'rgba(0,212,255,0.5)';
+      cursorDot.style.background = 'rgba(37,99,235,0.5)';
       cursorRing.style.transform = 'translate(-50%,-50%) scale(0.6)';
     });
     document.addEventListener('mouseup', () => {
       cursorDot.style.transform  = 'translate(-50%,-50%) scale(1)';
-      cursorDot.style.background = 'var(--neon-cyan, #00D4FF)';
+      cursorDot.style.background = 'var(--neon-blue, #2563EB)';
       cursorRing.style.transform = 'translate(-50%,-50%) scale(1)';
     });
   }
 })();
+
