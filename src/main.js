@@ -504,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (syncBtn) syncBtn.disabled = true;
 
     try {
-      // 1. Fetch LeetCode Stats
+      // 1. Fetch LeetCode Stats & Calendar
       try {
         const lcRes = await fetch('https://alfa-leetcode-api.onrender.com/VENKATESAN_k/solved');
         if (lcRes.ok) {
@@ -518,6 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           }
         }
+        await fetchLeetCodeCalendar();
       } catch (err) {
         console.warn('LeetCode live fetch warning:', err);
       }
@@ -570,10 +571,130 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // LeetCode Heatmap Grid Generator
+  function renderLeetCodeHeatmap(submissionCalendar) {
+    const gridContainer = document.getElementById('leetcode-heatmap-grid');
+    const totalSubmissionsEl = document.getElementById('heatmap-total-submissions');
+    const activeDaysEl = document.getElementById('heatmap-active-days');
+    const maxStreakEl = document.getElementById('heatmap-max-streak');
+    if (!gridContainer) return;
+
+    gridContainer.innerHTML = '';
+
+    const calData = typeof submissionCalendar === 'string' ? JSON.parse(submissionCalendar) : submissionCalendar;
+
+    const dateMap = {};
+    let totalSubmissions = 0;
+    let activeDays = 0;
+
+    Object.entries(calData).forEach(([timestampSec, count]) => {
+      const date = new Date(parseInt(timestampSec) * 1000);
+      const dateStr = date.toISOString().split('T')[0];
+      dateMap[dateStr] = (dateMap[dateStr] || 0) + count;
+      totalSubmissions += count;
+      if (count > 0) activeDays++;
+    });
+
+    if (totalSubmissionsEl) totalSubmissionsEl.textContent = totalSubmissions.toLocaleString();
+    if (activeDaysEl) activeDaysEl.textContent = activeDays.toString();
+
+    const today = new Date();
+    const days = [];
+    let currentStreak = 0, maxStreak = 0;
+
+    for (let i = 363; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const dateStr = d.toISOString().split('T')[0];
+      const count = dateMap[dateStr] || 0;
+      
+      if (count > 0) {
+        currentStreak++;
+        if (currentStreak > maxStreak) maxStreak = currentStreak;
+      } else {
+        currentStreak = 0;
+      }
+
+      days.push({ dateStr, count, dayOfWeek: d.getDay(), dateObj: d });
+    }
+
+    if (maxStreakEl) maxStreakEl.textContent = maxStreak.toString();
+
+    let tooltip = document.querySelector('.heatmap-tooltip');
+    if (!tooltip) {
+      tooltip = document.createElement('div');
+      tooltip.className = 'heatmap-tooltip';
+      document.body.appendChild(tooltip);
+    }
+
+    days.forEach(day => {
+      const cell = document.createElement('div');
+      let level = 0;
+      if (day.count >= 10) level = 4;
+      else if (day.count >= 6) level = 3;
+      else if (day.count >= 3) level = 2;
+      else if (day.count >= 1) level = 1;
+
+      cell.className = `heatmap-cell level-${level}`;
+
+      cell.addEventListener('mouseenter', (e) => {
+        const formattedDate = day.dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        tooltip.textContent = `${day.count} submission${day.count === 1 ? '' : 's'} on ${formattedDate}`;
+        tooltip.style.opacity = '1';
+      });
+
+      cell.addEventListener('mousemove', (e) => {
+        tooltip.style.left = (e.pageX + 10) + 'px';
+        tooltip.style.top = (e.pageY - 28) + 'px';
+      });
+
+      cell.addEventListener('mouseleave', () => {
+        tooltip.style.opacity = '0';
+      });
+
+      gridContainer.appendChild(cell);
+    });
+  }
+
+  async function fetchLeetCodeCalendar() {
+    try {
+      const calRes = await fetch('https://alfa-leetcode-api.onrender.com/VENKATESAN_k/calendar');
+      if (calRes.ok) {
+        const calData = await calRes.json();
+        if (calData && calData.submissionCalendar) {
+          renderLeetCodeHeatmap(calData.submissionCalendar);
+        }
+      }
+    } catch (err) {
+      console.warn('LeetCode calendar fetch warning:', err);
+    }
+  }
+
+  // Heatmap Tab Switcher
+  const tabLeetCode = document.getElementById('heatmap-tab-leetcode');
+  const tabGitHub = document.getElementById('heatmap-tab-github');
+  const viewLeetCode = document.getElementById('leetcode-heatmap-view');
+  const viewGitHub = document.getElementById('github-heatmap-view');
+
+  if (tabLeetCode && tabGitHub && viewLeetCode && viewGitHub) {
+    tabLeetCode.addEventListener('click', () => {
+      tabLeetCode.classList.add('active');
+      tabGitHub.classList.remove('active');
+      viewLeetCode.style.display = 'block';
+      viewGitHub.style.display = 'none';
+    });
+    tabGitHub.addEventListener('click', () => {
+      tabGitHub.classList.add('active');
+      tabLeetCode.classList.remove('active');
+      viewLeetCode.style.display = 'none';
+      viewGitHub.style.display = 'block';
+    });
+  }
+
   const refreshBtn = document.getElementById('refresh-stats-btn');
   if (refreshBtn) {
     refreshBtn.addEventListener('click', fetchLiveStats);
-    // Fetch live stats on page load
+    // Fetch live stats & heatmap on page load
     fetchLiveStats();
   }
 
