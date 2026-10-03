@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script type="module" crossorigin src="/portfolio/assets/index-BEeJ_39A.js"></script>
+    <script type="module" crossorigin src="/portfolio/assets/index-KYab-ATF.js"></script>
     <link rel="stylesheet" crossorigin href="/portfolio/assets/index-CjpxjIPA.css">
   </head>
   <body>
@@ -217,8 +217,8 @@
                 <button id="heatmap-tab-leetcode" class="filter-btn active" style="font-size: 0.8rem; padding: 6px 14px;">
                   <i class="fas fa-code"></i> LeetCode Heatmap
                 </button>
-                <button id="heatmap-tab-github" class="filter-btn" style="font-size: 0.8rem; padding: 6px 14px;">
-                  <i class="fab fa-github"></i> GitHub Graph
+                <button id="heatmap-tab-codeforces" class="filter-btn" style="font-size: 0.8rem; padding: 6px 14px;">
+                  <i class="fas fa-chart-line"></i> Codeforces Heatmap
                 </button>
               </div>
             </div>
@@ -244,9 +244,25 @@
               </div>
             </div>
 
-            <!-- GitHub Activity Graph View -->
-            <div id="github-heatmap-view" class="heatmap-view" style="display: none; text-align: center; padding: 10px 0;">
-              <img src="https://github-readme-activity-graph.vercel.app/graph?username=venkatesanweb&theme=minimal&bg_color=ffffff&color=2563eb&line=2563eb&point=7c3aed&hide_border=true" alt="GitHub Activity Graph" style="max-width: 100%; height: auto; border-radius: 8px;" loading="lazy" />
+            <!-- Codeforces Live Heatmap View -->
+            <div id="codeforces-heatmap-view" class="heatmap-view" style="display: none;">
+              <div class="heatmap-stats-summary" style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.25rem; font-size: 0.9rem; color: #475569;">
+                <div><strong style="color: #0F172A; font-size: 1.1rem;" id="cf-heatmap-total-submissions">449</strong> AC Submissions</div>
+                <div><strong style="color: #059669; font-size: 1.1rem;" id="cf-heatmap-active-days">305</strong> Active Days</div>
+                <div>Unique Solved: <strong style="color: #2563EB; font-size: 1.1rem;" id="cf-heatmap-unique-solved">446</strong> Problems</div>
+              </div>
+              <div class="heatmap-scroll-wrapper" style="overflow-x: auto; padding: 10px 0;">
+                <div id="codeforces-heatmap-grid" class="heatmap-grid"></div>
+              </div>
+              <div class="heatmap-legend" style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; font-size: 0.75rem; color: #64748B; margin-top: 10px;">
+                <span>Less</span>
+                <span class="legend-box level-0"></span>
+                <span class="legend-box level-1"></span>
+                <span class="legend-box level-2"></span>
+                <span class="legend-box level-3"></span>
+                <span class="legend-box level-4"></span>
+                <span>More</span>
+              </div>
             </div>
           </div>
         </div>
